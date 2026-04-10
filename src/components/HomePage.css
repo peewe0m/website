@@ -1,20 +1,40 @@
 /* src/components/HomePage.css */
 @font-face {
-    font-family: Primtime;
-    src: url('../assets/fonts/Primetime.ttf'); /* Make sure the path is correct */
+  font-family: Primtime;
+  src: url('../assets/fonts/Primetime.ttf');
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .homepage {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url('/public/images/Machine1.png');
-  background-size: 98% 96%;
+  background-size: 99% 97%;
   background-position: center;
-  animation: fadeIn 1.5s ease-out; /* Fade in effect for the whole page */
+  background-repeat: repeat;
+  overflow: hidden;
+  animation: fadeIn 1.5s ease-out;
+  padding: 20px 40px;
 }
 
-/* Fade-in Animation for the whole page */
+/* dark premium overlay */
+.homepage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.15) 35%,
+    rgba(0, 0, 0, 0.35) 70%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  z-index: 1;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -25,31 +45,35 @@
 }
 
 .navbar {
+  position: relative;
+  z-index: 3;
   display: flex;
-  margin-top: -5px;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  top: 20px;
-  left: 0;
-  right: 0;
-  padding: 10px 20px;
-  z-index: 10;
-  animation: slideIn 1s ease-out; /* Slide-in effect for navbar */
+  gap: 20px;
+  animation: slideIn 1s ease-out;
 }
 
 @keyframes slideIn {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(-60px);
+    opacity: 0;
   }
   100% {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+}
+
 .logo {
-  height: 50px;
-  animation: fadeInLogo 1s ease-out; /* Fade-in effect for logo */
+  height: 58px;
+  width: auto;
+  animation: fadeInLogo 1s ease-out;
 }
 
 @keyframes fadeInLogo {
@@ -61,112 +85,221 @@
   }
 }
 
-.title {
-  position: absolute;
-  margin-top: 270px;
-  right: 31px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 40px;
-  color: white;
-  font-weight: bold;
-  font-family: 'Primtime', sans-serif;
-  text-align: center;
-  opacity: 0;
-  animation: fadeInTitle 1.5s ease-out forwards; /* Fade-in effect for title */
-}
-
-@keyframes fadeInTitle {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.subtitle {
-  position: absolute;
-  margin-top: 285px;
-  right: 31px;
-  top: calc(50% + 40px);
-  transform: translateY(-50%);
-  font-size: 24px;
-  color: white;
-  font-family: 'Primtime', sans-serif;
-  font-weight: normal;
-  text-align: center;
-  opacity: 0;
-  animation: fadeInSubtitle 1.5s ease-out forwards; /* Fade-in effect for subtitle */
-}
-
-@keyframes fadeInSubtitle {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .navbar-buttons {
   display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .navbar-btn {
-  margin: 0 10px;
-  padding: 10px 20px;
+  padding: 10px 16px;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 700;
   background: transparent;
   color: white;
   border: none;
   cursor: pointer;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  border-radius: 6px;
 }
 
 .navbar-btn:hover {
   color: black;
   background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glowing effect on hover */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
 }
 
-.cta-buttons {
-  position: absolute;
-  bottom: 280px;
-  right: 35px;
+.hero-content {
+  position: relative;
+  z-index: 3;
+  min-height: calc(100vh - 100px);
   display: flex;
-  gap: 30px;
-  opacity: 0;
-  animation: fadeInButtons 1.5s ease-out forwards; /* Fade-in effect for buttons */
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: right;
+  max-width: 700px;
+  margin-left: auto;
+  padding-right: 10px;
+  animation: fadeUp 1.4s ease-out;
 }
 
-@keyframes fadeInButtons {
+@keyframes fadeUp {
   0% {
+    transform: translateY(35px);
     opacity: 0;
   }
   100% {
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
+.title {
+  margin: 0 0 14px 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  color: white;
+  font-weight: bold;
+  font-family: 'Primtime', sans-serif;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.35),
+    0 0 18px rgba(255, 255, 255, 0.25),
+    0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+.subtitle {
+  margin: 0 0 28px 0;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  line-height: 1.5;
+  color: white;
+  font-family: 'Primtime', sans-serif;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.18);
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .cta-btn {
-  padding: 13px 11px;
+  padding: 12px 22px;
   font-size: 13px;
   background-color: transparent;
   color: white;
   border: 2px solid white;
-  border-radius: 5px;
+  border-radius: 6px;
   font-family: 'Primtime', sans-serif;
   cursor: pointer;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  backdrop-filter: blur(3px);
 }
 
 .cta-btn:hover {
   background-color: white;
   color: black;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glowing effect on hover */
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
+}
+
+/* tablet */
+@media (max-width: 992px) {
+  .homepage {
+    padding: 20px 24px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 0;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .homepage {
+    padding: 18px 18px 28px;
+    background-position: 35% center;
+  }
+
+  .homepage::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.35) 10%,
+      rgba(0, 0, 0, 0.45) 55%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .navbar {
+    gap: 14px;
+  }
+
+  .navbar-buttons {
+    gap: 6px;
+  }
+
+  .navbar-btn {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .hero-content {
+    min-height: calc(100vh - 130px);
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .subtitle {
+    font-size: clamp(0.95rem, 4vw, 1.2rem);
+    max-width: 95%;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .cta-btn {
+    flex: 1 1 140px;
+    max-width: 180px;
+    font-size: 12px;
+    padding: 11px 16px;
+  }
+}
+
+/* small phones */
+@media (max-width: 480px) {
+  .navbar-buttons {
+    justify-content: center;
+  }
+
+  .navbar-btn {
+    font-size: 10px;
+    padding: 7px 8px;
+  }
+
+  .title {
+    line-height: 1.15;
+  }
+
+  .subtitle {
+    line-height: 1.4;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-btn {
+    width: 100%;
+    max-width: 220px;
+  }
 }
