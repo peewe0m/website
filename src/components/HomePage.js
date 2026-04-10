@@ -1,48 +1,39 @@
 // src/components/HomePage.js
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 
 const HomePage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="homepage">
-      {/* Navbar */}
-      <nav className="navbar">
-        <div className="brand">
-          <img src="/images/phvc.png" alt="Logo" className="logo" />
-        </div>
+      <div className="home-overlay">
+        <div className="hero-content">
+          <h1 className="title">Powerhouse Ventures Corporation</h1>
+          <p className="subtitle">
+            The Philippines Number One Ice Tube Machine Supplier
+          </p>
+          {/* <p className="subtitle">
+            From Cubes  to Profits <br/>We help your  Business <br/>stay cool and Grow
+          </p> */}
 
-        <div className={`navbar-buttons ${isMenuOpen ? 'open' : ''}`}>
-          <button className="navbar-btn">Home</button>
-          <button className="navbar-btn">About</button>
-          <button className="navbar-btn">Machine</button>
-          <button className="navbar-btn">Services</button>
-          <button className="navbar-btn">Contact</button>
-        </div>
 
-        {/* Hamburger Menu Icon */}
-        <div className="hamburger" onClick={toggleMenu}>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
-        </div>
-      </nav>
+          <div className="cta-buttons">
+            <button className="cta-btn" onClick={() => navigate('/about')}>
+              Learn More
+            </button>
+            <button className="cta-btn" onClick={() => navigate('/contact')}>
+              Contact Us
+            </button>
 
-      <div className="hero-content">
-        <h1 className="title">Powerhouse Ventures Corporation</h1>
-        <p className="subtitle">
-          The Philippines Number One Ice Tube Machine Supplier!
-        </p>
-
-        <div className="cta-buttons">
-          <button className="cta-btn learn-more">Learn More</button>
-          <button className="cta-btn contact-us">Contact Us</button>
+            
+          </div>
         </div>
+        <p className="subtitle2">
+            From Cubes  to Profits We help your  Business stay cool and Grow
+          </p>
+        
       </div>
     </div>
   );

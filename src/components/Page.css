@@ -1,0 +1,69 @@
+/* src/components/Page.css */
+.page {
+  min-height: 78vh;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 20px 40px;
+  text-align: center;
+}
+
+.page-content h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.page-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.page-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.page-content ul li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+form {
+  margin-top: 20px;
+  text-align: left;
+  display: inline-block;
+  max-width: 400px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #ffd700;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+form button:hover {
+  background-color: #f1c40f;
+}
